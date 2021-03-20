@@ -53,6 +53,15 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'html-loader'
+      },
+      // 字体图标 打包其他资源 （除js/css/html以外的资源）
+      {
+        // 排除js/css/html资源
+        exclude: /\.(js|css|html|less|jpg|png|gif|jpeg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[hash:10].[ext]'
+        }
       }
     ]
   },
@@ -64,5 +73,19 @@ module.exports = {
     })
   ],
   // 模式
-  mode: 'development' // 开发模式
+  mode: 'development', // 开发模式
+  
+  // 开发服务器 devServer 自动化：用于自动编译，自动打开浏览器，自动刷新浏览器
+  // 特点：只会在内存中编译打包，不会有任何输出
+  // 启动devServer 指令为：npx webpack-dev-server  (webpack5：npx webpack serve)
+  devServer: {
+    // 项目构建后的路径
+    contentBase: resolve(__dirname, 'build'),
+    // 启动gzip压缩
+    compress: true,
+    // 端口号
+    port: 3000,
+    //自动打开浏览器
+    open: true
+  }
 }
