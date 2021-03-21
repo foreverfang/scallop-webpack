@@ -1,21 +1,26 @@
 // webpack配置文件
-// 开发环境 webpack ./src/index.js -o ./build/built.js --mode=development
+// 开发环境 webpack ./src/js/index.js -o ./build/built.js --mode=development
+// 开发环境配置：能让代码运行
+// 项目运行指令：
+//   webpack 会将打包结果输出出去
+//   npx webpack serve 只会在内存中编译打包
 
 const {resolve} = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   // 入口起点
-  entry: './src/index.js',
+  entry: './src/js/index.js',
   // 输出
   output: {
-    filename: 'built.js',
+    filename: 'js/built.js', // 指定一个js目录
     path: resolve(__dirname, 'build')
   },
   // loader 配置
   module: {
     rules: [
       // loader详细配置
+      // 处理css资源 打包到js文件中了
       {
         test: /\.css$/,
         use: [
@@ -24,6 +29,7 @@ module.exports = {
         ]
       },
       // less-loader需要下载两个依赖 less-loader less
+      // 处理less资源
       {
         test: /\.less$/,
         use: [
@@ -32,7 +38,7 @@ module.exports = {
           'less-loader'
         ]
       },
-      // 图片资源loader 需要下载两个依赖 url-loader file-loader
+      // 处理图片资源 loader需要下载两个依赖 url-loader file-loader
       {
         test: /\.(jpg|png|gif|jpeg)/,
         loader: 'url-loader',
@@ -47,20 +53,22 @@ module.exports = {
           // 给图片进行重命名
           // [hash:10]取图片的hash的前十位
           // [ext]取文件原来的扩展名
-          name: '[hash:10].[ext]'
+          name: '[hash:10].[ext]',
+          outputPath: 'imgs' // 指定目录
         }
       },
       {
         test: /\.html$/,
         loader: 'html-loader'
       },
-      // 字体图标 打包其他资源 （除js/css/html以外的资源）
+      // 字体图标 打包其他资源 （除js/css/html等以外的资源）
       {
-        // 排除js/css/html资源
+        // 排除js/css/html等资源
         exclude: /\.(js|css|html|less|jpg|png|gif|jpeg)$/,
         loader: 'file-loader',
         options: {
-          name: '[hash:10].[ext]'
+          name: '[hash:10].[ext]',
+          outputPath: 'media' // 指定目录
         }
       }
     ]
