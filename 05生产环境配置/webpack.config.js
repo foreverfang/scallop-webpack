@@ -54,6 +54,8 @@ module.exports = {
                 // 在package.json中eslintconfig --> airbnb 代码风格指南
                 test: /\.js$/,
                 exclude: /node_modules/,
+                // 优先执行
+                enforce: 'pre',
                 loader: 'eslint-loader',
                 options: {
                     fix: true
