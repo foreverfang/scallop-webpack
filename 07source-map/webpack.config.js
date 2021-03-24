@@ -101,11 +101,13 @@ module.exports = {
 
 /**
  * source-map: 一种提供源代码到构建后代码映射技术 （如果构建后代码出错了，通过映射可以追踪源代码错误）
+ *
  *   [inline-|hidden-|eval-][nosources-][cheap-[module-]]source-map
- *   source-map: 外部
+ *            半隐藏          全隐藏      精确到行
+ *   source-map: 外部 单独的map文件
  *      错误代码准确信息和源代码的错误位置
  *
- *   inline-source-map：内联
+ *   inline-source-map：内联 跟js文件放在一起
  *    1.只生成一个内联source-map
  *      错误代码准确信息和源代码的错误位置
  *
@@ -137,7 +139,7 @@ module.exports = {
  *               cheap-module-source-map
  *               cheap-source-map
  *
- *    --> eval-source-map / eval-cheap-module-source-map
+ *    --> eval-source-map / eval-cheap-module-source-map（打包后信息更完整）
  *
  *    生产环境：源代码要不要隐藏？调试要不要更友好
  *              内联会让体积更大，所以生产环境一般不用内联

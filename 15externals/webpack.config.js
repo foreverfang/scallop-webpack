@@ -18,7 +18,7 @@ module.exports = {
     ],
     mode: 'production',
     externals: {
-        // 拒绝jquery被打包进来
+        // 拒绝jquery被打包进来 通过cdn引入
         jquery: 'jQuery'
     }
 }
