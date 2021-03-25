@@ -35,7 +35,7 @@ module.exports = {
     entry: {
         // 所有入口文件，最终只会形成一个chunk，输出只有一个bundle文件
         index: ['./src/index.js', './src/count.js'],
-        // 形成一个chunk，输出一个bundle
+        // 形成一个chunk，输出一个bundle文件
         add: './src/add.js'
     },
     output: {
