@@ -16,7 +16,9 @@ module.exports = {
                 // 移除空格
                 collapseWhitespace: true,
                 //一处注释
-                removeComments: true
+                removeComments: true,
+                // 去掉引号
+                removeAttributeQuotes: true
             }
         }),
     ],

@@ -18,12 +18,15 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
+                // use数组中loader执行顺序：从右到左，从下到上，依次执行
                 use: [
-                    // 创建style标签，将样式放上去
+                    // 创建 style 标签，将样式放上去
+                    // 创建 style 标签，将js的样式资源插入进行，添加到head中生效
                     // 'style-loader', 
-                    //  这里取代style-loader，作用：提取js中的css文件成单独文件
+                    //  这里取代 style-loader，作用：提取js中的css文件成单独文件
                     MiniCssExtractPlugin.loader,
-                    // 将css文件整合到js文件中
+                    // 将 css 文件整合到js文件中
+                    // 将 css 文件变成 commonjs 模块加载 js 中，里面内容是样式字符串
                     'css-loader',
 
                     /**

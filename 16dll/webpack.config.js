@@ -20,7 +20,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html'
         }),
-        // 告速webpack那些库不参与打包，同时使用时的名称也得变
+        // 告诉webpack那些库不参与打包，同时使用时的名称也得变
         new webpack.DllReferencePlugin({
             manifest: resolve(__dirname, 'dll/mainfest.json')
         }),

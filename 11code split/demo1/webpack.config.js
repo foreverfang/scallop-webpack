@@ -1,5 +1,5 @@
 /**
- * 代码分割 code split 方案1
+ * 代码分割 code split 方案1 多入口拆分
  * 
  */
 const { resolve } = require('path')

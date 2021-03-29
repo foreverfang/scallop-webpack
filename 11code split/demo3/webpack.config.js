@@ -1,5 +1,5 @@
 /**
- * 代码分割 code split 方案3
+ * 代码分割 code split 方案3 import
  */
 const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
